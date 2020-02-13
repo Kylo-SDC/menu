@@ -27,6 +27,40 @@ const getRestaurantTitle = (id, cb) => {
     return cb(restaurant[0].restaurant);
   });
 };
+/////////////////////////////////////////////////////
+
+const createRestaurant = (restaurant, callback) => {
+  Restaurants.create(restaurant)
+    .then((response) => {
+      callback(null, response);
+    });
+};
+
+const getAMenu = (restId, callback) => {
+  Restaurants.find({ id: `${restId}` })
+    .then((restaurant) => {
+      callback(null, restaurant[0].menus);
+    });
+};
+
+const deleteRestaurant = (restId, callback) => {
+
+  Restaurants.deleteOne({ id: `${restId}` })
+    .then((restaurant) => {
+      callback(null, restaurant);
+    });
+};
+
+const updateRestaurantName = (restId, newName, callback) => {
+  Restaurants.findOneAndUpdate({ id: `${restId}` }, { restaurant: `${newName}` })
+    .then((response) => {
+      callback(null, response);
+    });
+};
 
 module.exports.getRestaurantMenu = getRestaurantMenu;
 module.exports.getRestaurantTitle = getRestaurantTitle;
+module.exports.createRestaurant = createRestaurant;
+module.exports.getAMenu = getAMenu;
+module.exports.deleteRestaurant = deleteRestaurant;
+module.exports.updateRestaurantName = updateRestaurantName;
