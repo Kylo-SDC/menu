@@ -20,7 +20,7 @@ app.use(express.static('public'));
 
 // CREATE
 
-app.post('/menu', (req, res) => {
+app.post('/api/menu', (req, res) => {
   db.createRestaurant(req.body, (err, response) => {
     if (err) {
       res.status(404).send('Error posting restaurant');
@@ -31,7 +31,7 @@ app.post('/menu', (req, res) => {
 });
 
 // READ
-app.get('/menu/:restId', (req, res) => {
+app.get('/api/menu/:restId', (req, res) => {
   const { restId } = req.params;
   console.log(restId);
   db.getAMenu(restId, (err, menus) => {
@@ -46,7 +46,7 @@ app.get('/menu/:restId', (req, res) => {
 
 // UPDATE
 
-app.patch('/menu/:id', (req, res) => {
+app.patch('/api/menu/:id', (req, res) => {
   console.log(req.body);
   db.updateRestaurantName(req.params.id, req.body.name, (err, response) => {
     if (err) {
@@ -59,7 +59,7 @@ app.patch('/menu/:id', (req, res) => {
 
 // DELETE
 
-app.delete('/menu/:id', (req, res) => {
+app.delete('/api/menu/:id', (req, res) => {
   console.log('hello', req.params.id);
   db.deleteRestaurant(req.params.id, (err, response) => {
     if (err) {
