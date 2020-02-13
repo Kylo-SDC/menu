@@ -35,5 +35,15 @@ From within the root directory:
 ```sh
 npm install -g webpack
 npm install
+
 ```
+
+## API
+| Endpoint              |  Type   |  Description                        |
+|-----------------------|---------|-------------------------------------|
+| '/api/menu'           |  Post   |  Creates a new restaurant           |
+| '/api/menu/:restId'   |  Get    |  Gets all menus from restaurant     |
+| '/api/menu/:id'       |  Patch  |  Updates restaurant name            |
+| '/api/menu/:id'       |  Delete |  Deletes a restaurant               |
+|-----------------------|---------|-------------------------------------|
 
