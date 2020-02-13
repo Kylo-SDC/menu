@@ -20,36 +20,63 @@ app.use(express.static('public'));
 
 // CREATE
 
-// app.post('/menu', (req, res) => {
-//   db.createData(req.body, (response) => {
-//     res.status(200).json(response);
-//   });
-// });
+app.post('/menu', (req, res) => {
+  db.createRestaurant(req.body, (err, response) => {
+    if (err) {
+      res.status(404).send('Error posting restaurant');
+      return;
+    }
+    res.status(200).json(response);
+  });
+});
 
 // READ
+app.get('/menu/:restId', (req, res) => {
+  const { restId } = req.params;
+  console.log(restId);
+  db.getAMenu(restId, (err, menus) => {
+    if (err) {
+      res.status(404).send('Error getting menus');
+      return;
+    }
+    res.status(200).json(menus);
+  });
+});
 
-app.get('/menu/:id', (req, res) => {
+
+// UPDATE
+
+app.patch('/menu/:id', (req, res) => {
+  console.log(req.body);
+  db.updateRestaurantName(req.params.id, req.body.name, (err, response) => {
+    if (err) {
+      res.status(404).send('Couldnt update restaurant name');
+      return;
+    }
+    res.status(200).json(response);
+  });
+});
+
+// DELETE
+
+app.delete('/menu/:id', (req, res) => {
+  console.log('hello', req.params.id);
+  db.deleteRestaurant(req.params.id, (err, response) => {
+    if (err) {
+      res.status(404).send('Error deleting restaurant');
+      return;
+    }
+    res.status(200).json(response);
+  });
+});
+
+/////////////////////////////////////////////////////
+app.get('/getmenu/:id', (req, res) => {
   console.log(`menu requesting id = ${req.params.id}`);
   db.getRestaurantMenu(req.params.id, (restaurant) => {
     res.status(200).json(restaurant);
   });
 });
-
-// UPDATE
-
-// app.patch('/menu/:id', (req, res) => {
-//   db.updateData(req.params.id, req.body, (response) => {
-//     res.status(200).json(response);
-//   });
-// });
-
-// DELETE
-
-// app.delete('/menu/:id', (req, res) => {
-//   db.deleteData(req.params.id, (response) => {
-//     res.status(200).json(response);
-//   });
-// });
 
 app.get('/gettitle/:id', (req, res) => {
   console.log(`title requesting id = ${req.params.id}`);
