@@ -1,7 +1,7 @@
-/* eslint-disable import/order */
+
 const process = require('process');
-const generateData = require('./genData.js');
 const mongoose = require('mongoose');
+const generateData = require('./genData.js');
 const restaurantSchema = require('./schema.js');
 
 mongoose.connect('mongodb://localhost/menus', {
