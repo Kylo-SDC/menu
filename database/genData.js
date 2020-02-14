@@ -7,10 +7,10 @@ const randomSections = () => Math.floor(Math.random() * 3) + 1;
 // create 100 records
 const records = [];
 const
-const generateData = function (numOfRecords, lastId = 0) {
-  for (let i = 0; i < numOfRecords; i += 1) {
+const generateData = function (numberOfRecords, prevId = 0) {
+  for (let i = 0; i < numberOfRecords; i += 1) {
     records[i] = {
-      id: lastId + 1,
+      id: prevId + 1,
       restaurant: faker.random.words(),
       menus: [],
     };
