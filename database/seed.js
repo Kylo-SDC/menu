@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 const process = require('process');
 const generateData = require('./genData.js');
 const mongoose = require('mongoose');
