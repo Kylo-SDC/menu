@@ -6,8 +6,7 @@ const randomSections = () => Math.floor(Math.random() * 3) + 1;
 
 // create 100 records
 const records = [];
-const
-const generateData = function (numberOfRecords, prevId = 0) {
+const generateData = function (numberOfRecords, prevId) {
   for (let i = 0; i < numberOfRecords; i += 1) {
     records[i] = {
       id: prevId + 1,
