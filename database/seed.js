@@ -1,4 +1,3 @@
-
 const process = require('process');
 const mongoose = require('mongoose');
 const generateData = require('./genData.js');
