@@ -31,3 +31,5 @@ dist/
 ## CSVs
 /database/menus.csv
 /database/restaurants.csv
+/database/sections.csv
+/database/items.csv
