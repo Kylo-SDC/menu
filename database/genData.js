@@ -2,14 +2,8 @@
 const fs = require('fs');
 const faker = require('faker');
 
-
-// const menus = fs.createWriteStream('./database/menus.csv');
-// menus.write('restuarantId,menuTitle,description\n');
-// Helper Functions
-const randomItems = () => Math.floor(Math.random() * 6) + 4;
-const randomSections = () => Math.floor(Math.random() * 3) + 1;
 // ////////////////////////////////////////////////////////////////////////////
-// create 100 restaurants
+
 const genRestaurants = (numOfRestaurants, encoding) => {
   const wsRestaurants = fs.createWriteStream('./database/restaurants.csv');
   wsRestaurants.write('id,name\n');
@@ -40,8 +34,6 @@ const genRestaurants = (numOfRestaurants, encoding) => {
 genRestaurants(10, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
-// const wsMenus = fs.createWriteStream('./database/menus.csv');
-// wsMenus.write('restaurant ID, menu ID, title, description\n');
 
 const genMenus = (numberOfMenus, encoding) => {
   const wsMenus = fs.createWriteStream('./database/menus.csv');
