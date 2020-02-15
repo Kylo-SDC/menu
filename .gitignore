@@ -28,3 +28,6 @@ dist/
 # Bundle
 /public/main.js
 
+## CSVs
+/database/menus.csv
+/database/restaurants.csv
