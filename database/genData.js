@@ -31,7 +31,7 @@ const genRestaurants = (numOfRestaurants, encoding) => {
   }
   writecsv();
 };
-genRestaurants(10, 'utf-8');
+genRestaurants(500000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -68,7 +68,7 @@ const genMenus = (numberOfMenus, encoding) => {
   }
   writecsv();
 };
-genMenus(20, 'utf-8');
+genMenus(1000000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -111,7 +111,7 @@ const genMenuSections = (numberOfSections, encoding) => {
   writecsv();
 };
 
-genMenuSections(80, 'utf-8');
+genMenuSections(4000000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -162,7 +162,7 @@ const genMenuItems = (numberOfItems, encoding) => {
   writecsv();
 };
 
-genMenuItems(400, 'utf-8');
+genMenuItems(20000000, 'utf-8');
 
 
 // ////////////////////////////////////////////////////////////////////////////
@@ -176,15 +176,15 @@ genMenuItems(400, 'utf-8');
 //       restaurant: faker.random.words(),
 //       menus: [],
 //     };
-//     restaurants.write(`${records[i].id},${records[i].restaurant}\n`);
 //     for (let j = 0; j < 5; j += 1) {
 //       records[i].menus[j] = {
 //         title: faker.random.word(),
 //         description:
-//           `${faker.lorem.sentence()} ${faker.lorem.sentence()} ${faker.lorem.sentence()} ${faker.lorem.sentence()} ${faker.lorem.sentence()} ${faker.lorem.sentence()} ${faker.lorem.sentence()}`,
+//         `${faker.lorem.sentence()} ${faker.lorem.sentence()}
+//          ${faker.lorem.sentence()} ${faker.lorem.sentence()}
+//          ${faker.lorem.sentence()} ${faker.lorem.sentence()} ${faker.lorem.sentence()}`,
 //         sections: [],
 //       };
-//       menus.write(`${records[i].id},${records[i].menus[j].title},${records[i].menus[j].description}\n`);
 //       const sectionLength = randomSections();
 //       for (let k = 0; k < sectionLength; k += 1) {
 //         records[i].menus[j].sections[k] = {
