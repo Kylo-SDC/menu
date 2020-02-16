@@ -9,7 +9,7 @@ const genRestaurants = (numOfRestaurants, encoding) => {
   wsRestaurants.write('id,name\n');
   let id = 0;
   let i = numOfRestaurants;
-  function writecsv() {
+  function writeCSV() {
     let ok = true;
     do {
       id += 1;
@@ -26,22 +26,22 @@ const genRestaurants = (numOfRestaurants, encoding) => {
     } while (i > 0 && ok);
     if (i > 0) {
       // continue once 'drained'
-      wsRestaurants.once('drain', writecsv);
+      wsRestaurants.once('drain', writeCSV);
     }
   }
-  writecsv();
+  writeCSV();
 };
-genRestaurants(500000, 'utf-8');
+genRestaurants(250000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
 const genMenus = (numberOfMenus, encoding) => {
   const wsMenus = fs.createWriteStream('./database/menus.csv');
-  wsMenus.write('restaurant ID, menu ID, title, description\n');
+  wsMenus.write('restaurantID,menuID,title,description\n');
   let menuId = 1;
   let restaurantId = 1;
   let i = numberOfMenus;
-  function writecsv() {
+  function writeCSV() {
     let ok = true;
     do {
       i -= 1;
@@ -57,31 +57,30 @@ const genMenus = (numberOfMenus, encoding) => {
 
       if (i === -1) {
         wsMenus.end();
-        // wsMenus.write(data, encoding, cb);
       } else {
         ok = wsMenus.write(data, encoding);
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      wsMenus.once('drain', writecsv);
+      wsMenus.once('drain', writeCSV);
     }
   }
-  writecsv();
+  writeCSV();
 };
-genMenus(1000000, 'utf-8');
+genMenus(500000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
 const genMenuSections = (numberOfSections, encoding) => {
   const wsMenuSections = fs.createWriteStream('./database/sections.csv');
-  wsMenuSections.write('restaurant ID, menu ID, section ID, title\n');
+  wsMenuSections.write('restaurantID,menuID,sectionID,title\n');
 
   let sectionId = 1;
   let menuId = 1;
   let restaurantId = 1;
   let i = numberOfSections;
 
-  function writecsv() {
+  function writeCSV() {
     let ok = true;
     do {
       i -= 1;
@@ -105,19 +104,19 @@ const genMenuSections = (numberOfSections, encoding) => {
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      wsMenuSections.once('drain', writecsv);
+      wsMenuSections.once('drain', writeCSV);
     }
   }
-  writecsv();
+  writeCSV();
 };
 
-genMenuSections(4000000, 'utf-8');
+genMenuSections(2000000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
 const genMenuItems = (numberOfItems, encoding) => {
   const wsMenuItems = fs.createWriteStream('./database/items.csv');
-  wsMenuItems.write('restaurant ID, menu ID, section ID, item ID, title, price, description\n');
+  wsMenuItems.write('restaurantID,menuID,sectionID,itemID,title,price,description\n');
 
   let itemId = 1;
   let sectionId = 1;
@@ -125,7 +124,7 @@ const genMenuItems = (numberOfItems, encoding) => {
   let restaurantId = 1;
   let i = numberOfItems;
 
-  function writecsv() {
+  function writeCSV() {
     let ok = true;
     do {
       i -= 1;
@@ -156,13 +155,13 @@ const genMenuItems = (numberOfItems, encoding) => {
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      wsMenuItems.once('drain', writecsv);
+      wsMenuItems.once('drain', writeCSV);
     }
   }
-  writecsv();
+  writeCSV();
 };
 
-genMenuItems(20000000, 'utf-8');
+genMenuItems(10000000, 'utf-8');
 
 
 // ////////////////////////////////////////////////////////////////////////////
