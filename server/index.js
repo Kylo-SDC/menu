@@ -2,8 +2,8 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const db = require('./../database');
-// const db = require('../database/sql/queries.js');
+// const db = require('./../database');
+const db = require('../database/sql/queries.js');
 
 const app = express();
 
@@ -137,6 +137,7 @@ app.get('/api/item/:restaurantId/:menuId/:sectionId/:itemId', (req, res) => {
   let {
     restaurantId, menuId, sectionId, itemId,
   } = req.params;
+  console.log('hello');
   restaurantId = Number(restaurantId);
   menuId = Number(menuId);
   sectionId = Number(sectionId);
