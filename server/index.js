@@ -17,25 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-// module.exports = {
-//   createRestaurant,
-//   createMenu,
-//   createSection,
-//   createItem,
-//   getRestaurant,
-//   getMenu,
-//   getSection,
-//   getItem,
-//   updateRestaurant,
-//   updateMenu,
-//   updateSection,
-//   updateItem,
-//   deleteRestaurant,
-//   deleteMenu,
-//   deleteSection,
-//   deleteItem,
-// };
-
 // ///////////////////////////////////////////////////////////
 
 // CREATE
