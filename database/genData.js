@@ -14,7 +14,7 @@ const genRestaurants = (numOfRestaurants, encoding) => {
     do {
       id += 1;
       i -= 1;
-      const restaurantName = faker.random.words();
+      const restaurantName = faker.lorem.word();
       const data = `${id},${restaurantName}\n`;
       // termination
       if (i === -1) {
@@ -31,7 +31,7 @@ const genRestaurants = (numOfRestaurants, encoding) => {
   }
   writeCSV();
 };
-genRestaurants(250000, 'utf-8');
+genRestaurants(500000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -49,8 +49,8 @@ const genMenus = (numberOfMenus, encoding) => {
         restaurantId += 1;
         menuId = 1;
       }
-      const menuTitle = faker.random.word();
-      const menuDescription = `${faker.lorem.sentence()}`;
+      const menuTitle = faker.lorem.word();
+      const menuDescription = `${faker.lorem.word()} ${faker.lorem.word()} ${faker.lorem.word()}`;
       const data = `${restaurantId},${menuId},${menuTitle},${menuDescription}\n`;
 
       menuId += 1;
@@ -67,7 +67,7 @@ const genMenus = (numberOfMenus, encoding) => {
   }
   writeCSV();
 };
-genMenus(500000, 'utf-8');
+genMenus(1000000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -92,7 +92,7 @@ const genMenuSections = (numberOfSections, encoding) => {
         menuId = 1;
         restaurantId += 1;
       }
-      const sectionTitle = faker.random.word();
+      const sectionTitle = faker.lorem.word();
       const data = `${restaurantId},${menuId},${sectionId},${sectionTitle}\n`;
 
       sectionId += 1;
@@ -110,7 +110,7 @@ const genMenuSections = (numberOfSections, encoding) => {
   writeCSV();
 };
 
-genMenuSections(2000000, 'utf-8');
+genMenuSections(4000000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -140,9 +140,9 @@ const genMenuItems = (numberOfItems, encoding) => {
         restaurantId += 1;
         menuId = 1;
       }
-      const itemTitle = faker.random.words();
+      const itemTitle = `${faker.lorem.word()} ${faker.lorem.word()}`;
       const itemPrice = `$${faker.finance.amount()}`;
-      const itemDescription = `${faker.lorem.sentence()} ${faker.lorem.sentence()}`;
+      const itemDescription = `${faker.lorem.word()} ${faker.lorem.word()} ${faker.lorem.word()}`;
 
       const data = `${restaurantId},${menuId},${sectionId},${itemId},${itemTitle},${itemPrice},${itemDescription}\n`;
 
@@ -161,7 +161,7 @@ const genMenuItems = (numberOfItems, encoding) => {
   writeCSV();
 };
 
-genMenuItems(10000000, 'utf-8');
+genMenuItems(20000000, 'utf-8');
 
 
 // ////////////////////////////////////////////////////////////////////////////

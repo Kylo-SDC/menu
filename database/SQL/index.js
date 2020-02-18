@@ -1,19 +1,21 @@
-// create database connection
-// write database querying functions
-// export functions to be used in server api
+require('dotenv').config();
+const { Pool } = require('pg');
 
+// const Pool = require('pg').Pool
+// const pool = new Pool({
+//   user: 'me',
+//   host: 'localhost',
+//   database: 'api',
+//   password: 'password',
+//   port: 5432,
+// })
 
-// const createData = function() {};
+const pool = new Pool({
+  user: 'nas',
+  host: 'localhost',
+  database: 'sdc',
+  password: '',
+  port: 5432,
+});
 
-// const getData = function() {};
-
-// const updateData = function () {};
-
-// const deleteData = function() {};
-
-// module.exports = {
-//   createData: createData,
-//   getData: getData,
-//   updateData: updataData,
-//   deleteData: deleteData,
-// }
+module.exports = pool;
