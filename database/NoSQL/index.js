@@ -1,18 +1,12 @@
-// create database connection
-// write database querying functions
-// export functions to be used in server api
+require('dotenv').config();
+const neo4j = require('neo4j-driver');
 
-// const createData = function() {};
+const port = process.env.neo4jPort;
+const password = process.env.neo4jPassword;
+const user = process.env.neo4jUser;
 
-// const getData = function() {};
+const driver = neo4j.driver(`bolt://localhost:${port}`, neo4j.auth.basic(`${user}`, `${password}`));
 
-// const updateData = function () {};
+const session = driver.session();
 
-// const deleteData = function() {};
-
-// module.exports = {
-//   createData: createData,
-//   getData: getData,
-//   updateData: updataData,
-//   deleteData: deleteData,
-// }
+module.exports = session;

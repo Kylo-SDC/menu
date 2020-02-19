@@ -52,12 +52,36 @@ const createItem = (restaurantId, menuId, sectionId, itemName, itemPrice, itemDe
 
 // get a restaurant name
 const getRestaurant = (restaurantId, callback) => {
-  pool.query('SELECT restaurant_name FROM restaurants WHERE restaurant_id = $1', [restaurantId], (err, result) => {
+  const response = [];
+
+  pool.query('SELECT * FROM restaurants WHERE restaurant_id = $1', [restaurantId], (err, result) => {
     if (err) {
       callback(err, null);
       return;
     }
-    callback(null, result);
+    response.push(result.rows);
+  });
+  pool.query('SELECT * FROM menus WHERE restaurant_id = $1', [restaurantId], (err, result) => {
+    if (err) {
+      callback(err, null);
+      return;
+    }
+    response.push(result.rows);
+  });
+  pool.query('SELECT * FROM sections WHERE restaurant_id = $1', [restaurantId], (err, result) => {
+    if (err) {
+      callback(err, null);
+      return;
+    }
+    response.push(result.rows);
+  });
+  pool.query('SELECT * FROM items WHERE restaurant_id = $1', [restaurantId], (err, result) => {
+    if (err) {
+      callback(err, null);
+      return;
+    }
+    response.push(result.rows);
+    callback(null, response);
   });
 };
 
@@ -69,7 +93,7 @@ const getMenu = (restaurantId, menuId, callback) => {
       callback(err, null);
       return;
     }
-    callback(null, result);
+    callback(null, result.rows);
   });
 };
 
@@ -81,7 +105,7 @@ const getSection = (restaurantId, menuId, sectionId, callback) => {
       callback(err, null);
       return;
     }
-    callback(null, result);
+    callback(null, result.rows);
   });
 };
 
@@ -93,7 +117,7 @@ const getItem = (restaurantId, menuId, sectionId, itemId, callback) => {
       callback(err, null);
       return;
     }
-    callback(null, result);
+    callback(null, result.rows);
   });
 };
 

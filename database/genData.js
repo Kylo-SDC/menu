@@ -3,8 +3,10 @@ const fs = require('fs');
 const faker = require('faker');
 
 // ////////////////////////////////////////////////////////////////////////////
+let start;
 
 const genRestaurants = (numOfRestaurants, encoding) => {
+  start = Date.now();
   const wsRestaurants = fs.createWriteStream('./database/restaurants.csv');
   wsRestaurants.write('id,name\n');
   let id = 0;
@@ -23,7 +25,7 @@ const genRestaurants = (numOfRestaurants, encoding) => {
         // check if we continue
         ok = wsRestaurants.write(data, encoding);
       }
-    } while (i > 0 && ok);
+    } while (i >= 0 && ok);
     if (i > 0) {
       // continue once 'drained'
       wsRestaurants.once('drain', writeCSV);
@@ -31,7 +33,7 @@ const genRestaurants = (numOfRestaurants, encoding) => {
   }
   writeCSV();
 };
-genRestaurants(500000, 'utf-8');
+genRestaurants(10000000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -60,14 +62,14 @@ const genMenus = (numberOfMenus, encoding) => {
       } else {
         ok = wsMenus.write(data, encoding);
       }
-    } while (i > 0 && ok);
+    } while (i >= 0 && ok);
     if (i > 0) {
       wsMenus.once('drain', writeCSV);
     }
   }
   writeCSV();
 };
-genMenus(1000000, 'utf-8');
+genMenus(20000000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -102,7 +104,7 @@ const genMenuSections = (numberOfSections, encoding) => {
       } else {
         ok = wsMenuSections.write(data, encoding);
       }
-    } while (i > 0 && ok);
+    } while (i >= 0 && ok);
     if (i > 0) {
       wsMenuSections.once('drain', writeCSV);
     }
@@ -110,7 +112,7 @@ const genMenuSections = (numberOfSections, encoding) => {
   writeCSV();
 };
 
-genMenuSections(4000000, 'utf-8');
+genMenuSections(80000000, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -149,11 +151,14 @@ const genMenuItems = (numberOfItems, encoding) => {
       itemId += 1;
 
       if (i === -1) {
+        const end = Date.now();
+        const elapsed = end - start;
+        console.log(`Elapsed Time: ${elapsed} milliseconds`);
         wsMenuItems.end();
       } else {
         ok = wsMenuItems.write(data, encoding);
       }
-    } while (i > 0 && ok);
+    } while (i >= 0 && ok);
     if (i > 0) {
       wsMenuItems.once('drain', writeCSV);
     }
@@ -161,7 +166,12 @@ const genMenuItems = (numberOfItems, encoding) => {
   writeCSV();
 };
 
-genMenuItems(20000000, 'utf-8');
+genMenuItems(400000000, 'utf-8');
+
+// if (elapsed1 && elapsed2 && elapsed3 && elapsed4) {
+//   const totalElapsed = elapsed1 + elapsed2 + elapsed3 + elapsed4;
+//   console.log(`Time Elapsed: ${totalElapsed} milliseconds`);
+// }
 
 
 // ////////////////////////////////////////////////////////////////////////////

@@ -137,6 +137,7 @@ app.get('/api/item/:restaurantId/:menuId/:sectionId/:itemId', (req, res) => {
   let {
     restaurantId, menuId, sectionId, itemId,
   } = req.params;
+  console.log('hello');
   restaurantId = Number(restaurantId);
   menuId = Number(menuId);
   sectionId = Number(sectionId);
