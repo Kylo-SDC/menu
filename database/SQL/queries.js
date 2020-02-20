@@ -50,7 +50,8 @@ const createItem = (restaurantId, menuId, sectionId, itemName, itemPrice, itemDe
 
 // READ
 
-// get a restaurant name
+// get a restaurant and all associated menus, sections, and iems.
+
 const getRestaurant = async (restaurantId, callback) => {
   const data = [];
   const storage = {};
@@ -82,8 +83,6 @@ const getRestaurant = async (restaurantId, callback) => {
   });
 
   const items = await pool.query('SELECT * FROM items WHERE restaurant_id = $1', [restaurantId]);
-
-  console.log(items.rows);
 
   items.rows.forEach((el) => {
     const item = {};

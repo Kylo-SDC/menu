@@ -1,6 +1,6 @@
-const session = require('./index.js');
+const cassie = require('./index.js');
 
-const cypher = 'Create (p:Person {name: {name} })';
-const params = { name: 'Hello Word' };
-
-session.run(cypher, params);
+cassie.execute('SELECT * FROM restaurants WHERE restaurant_id = 20', (err, result) => {
+  const restaurant = result.first();
+  console.log(restaurant);
+});
