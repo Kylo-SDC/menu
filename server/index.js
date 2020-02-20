@@ -103,9 +103,9 @@ app.get('/api/restaurant/:restaurantId', (req, res) => {
 // menu name and description
 
 app.get('/api/menu/:restaurantId/:menuId', (req, res) => {
-  let { restaurantId, menuId } = req.params;
-  restaurantId = Number(restaurantId);
-  menuId = Number(menuId);
+  const { restaurantId, menuId } = req.params;
+  // restaurantId = restaurantId;
+  // menuId = menuId;
   db.getMenu(restaurantId, menuId, (err, result) => {
     if (err) {
       res.status(400).json(err);
