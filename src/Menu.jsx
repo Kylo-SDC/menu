@@ -9,7 +9,7 @@ const Menu = ({ id }) => {
   const [viewFull, setViewFull] = useState(false);
 
   useEffect(() => {
-    fetch(`/getmenu/${id}`)
+    fetch(`/api/restaurant/${id}`)
       .then((response) => response.json())
       .then((myJson) => {
         setMenus(myJson[0].menus);

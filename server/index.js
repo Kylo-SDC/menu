@@ -100,6 +100,20 @@ app.get('/api/restaurant/:restaurantId', (req, res) => {
   });
 });
 
+// get restaurant name
+
+app.get('/api/restaurantTitle/:restaurantId', (req, res) => {
+  let { restaurantId } = req.params;
+  restaurantId = Number(restaurantId);
+  db.getRestaurantTitle(restaurantId, (err, result) => {
+    if (err) {
+      res.status(400).json(err);
+      return;
+    }
+    res.status(200).json(result);
+  });
+});
+
 // menu name and description
 
 app.get('/api/menu/:restaurantId/:menuId', (req, res) => {
@@ -306,7 +320,7 @@ app.get('/getmenu/:id', (req, res) => {
 
 app.get('/gettitle/:id', (req, res) => {
   console.log(`title requesting id = ${req.params.id}`);
-  db.getRestaurantTitle(req.params.id, (restaurant) => {
+  db.getTitle(req.params.id, (restaurant) => {
     console.log(req.headers);
     res.set({ 'Access-Control-Allow-Origin': '*' });
     res.status(200).json(restaurant);

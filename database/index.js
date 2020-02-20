@@ -19,7 +19,7 @@ const getRestaurantMenu = (id, cb) => {
   });
 };
 
-const getRestaurantTitle = (id, cb) => {
+const getTitle = (id, cb) => {
   Restaurants.find({ id }, (err, restaurant) => {
     if (err) {
       return console.log(err);
@@ -59,7 +59,7 @@ const updateRestaurantName = (restId, newName, callback) => {
 };
 
 module.exports.getRestaurantMenu = getRestaurantMenu;
-module.exports.getRestaurantTitle = getRestaurantTitle;
+module.exports.getTitle = getTitle;
 module.exports.createRestaurant = createRestaurant;
 module.exports.getAMenu = getAMenu;
 module.exports.deleteRestaurant = deleteRestaurant;

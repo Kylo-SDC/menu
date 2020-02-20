@@ -98,6 +98,19 @@ const getRestaurant = async (restaurantId, callback) => {
   callback(null, data);
 };
 
+// get restaurant name
+
+const getRestaurantTitle = (restaurantId, callback) => {
+  pool.query('SELECT restaurant_name FROM restaurants WHERE restaurant_id = $1', [restaurantId], (err, result) => {
+    if (err) {
+      callback(err, null);
+      return;
+    }
+    const title = result.rows[0].restaurant_name;
+    callback(null, title);
+  });
+};
+
 
 // get menu name and description from existing restaurant
 
@@ -295,6 +308,7 @@ module.exports = {
   createSection,
   createItem,
   getRestaurant,
+  getRestaurantTitle,
   getMenu,
   getSection,
   getItem,
