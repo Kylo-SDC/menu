@@ -86,7 +86,7 @@ app.post('/api/item/:restaurantId/:menuId/:sectionId', (req, res) => {
 
 // READ
 
-// restaurant name
+// get restaurant and all restaurant info (menus, sections, items)
 
 app.get('/api/restaurant/:restaurantId', (req, res) => {
   let { restaurantId } = req.params;

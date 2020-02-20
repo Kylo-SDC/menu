@@ -39,11 +39,11 @@ npm install
 ```
 
 ## API
-| Endpoint              |  Type   |  Description                        |
-|-----------------------|---------|-------------------------------------|
-| '/api/menu'           |  Post   |  Creates a new restaurant           |
-| '/api/menu/:restId'   |  Get    |  Gets all menus from restaurant     |
-| '/api/menu/:id'       |  Patch  |  Updates restaurant name            |
-| '/api/menu/:id'       |  Delete |  Deletes a restaurant               |
-|-----------------------|---------|-------------------------------------|
+| Endpoint                          |  Type   |  Description                        |
+|-----------------------------------|---------|-------------------------------------|
+| '/api/menu/:restaurantId'         |  Post   |  Creates a new menu                 |
+| '/api/restaurant/:restaurantId'   |  Get    |  Gets all restaurant info           |
+| '/api/menu/:restaurantId/:menuId' |  Patch  |  Updates menu name and description  |
+| '/api/restaurant/:restaurantId'   |  Delete |  Deletes a restaurant               |
+
 
