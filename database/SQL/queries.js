@@ -51,39 +51,54 @@ const createItem = (restaurantId, menuId, sectionId, itemName, itemPrice, itemDe
 // READ
 
 // get a restaurant name
-const getRestaurant = (restaurantId, callback) => {
-  const response = [];
+const getRestaurant = async (restaurantId, callback) => {
+  const data = [];
+  const storage = {};
 
-  pool.query('SELECT * FROM restaurants WHERE restaurant_id = $1', [restaurantId], (err, result) => {
-    if (err) {
-      callback(err, null);
-      return;
-    }
-    response.push(result.rows);
+  const restaurants = await pool.query('SELECT * FROM restaurants WHERE restaurant_id = $1', [restaurantId]);
+
+  storage.id = restaurants.rows[0].restaurant_id;
+  storage.restaurant = restaurants.rows[0].restaurant_name;
+  storage.menus = [];
+
+  const menus = await pool.query('SELECT * FROM menus WHERE restaurant_id = $1', [restaurantId]);
+
+  menus.rows.forEach((el) => {
+    const menu = {};
+    menu.title = el.menu_name;
+    menu.description = el.menu_description;
+    menu.sections = [];
+    storage.menus.push(menu);
   });
-  pool.query('SELECT * FROM menus WHERE restaurant_id = $1', [restaurantId], (err, result) => {
-    if (err) {
-      callback(err, null);
-      return;
-    }
-    response.push(result.rows);
+
+  const sections = await pool.query('SELECT * FROM sections WHERE restaurant_id = $1', [restaurantId]);
+
+  sections.rows.forEach((el) => {
+    const section = {};
+    section.items = [];
+    section.title = el.section_name;
+    const menuIdx = el.menu_id - 1;
+    storage.menus[menuIdx].sections.push(section);
   });
-  pool.query('SELECT * FROM sections WHERE restaurant_id = $1', [restaurantId], (err, result) => {
-    if (err) {
-      callback(err, null);
-      return;
-    }
-    response.push(result.rows);
+
+  const items = await pool.query('SELECT * FROM items WHERE restaurant_id = $1', [restaurantId]);
+
+  console.log(items.rows);
+
+  items.rows.forEach((el) => {
+    const item = {};
+    item.title = el.item_name;
+    item.price = el.item_price;
+    item.description = el.item_description;
+    const menuIdx = el.menu_id - 1;
+    const sectionIdx = el.section_id - 1;
+    storage.menus[menuIdx].sections[sectionIdx].items.push(item);
   });
-  pool.query('SELECT * FROM items WHERE restaurant_id = $1', [restaurantId], (err, result) => {
-    if (err) {
-      callback(err, null);
-      return;
-    }
-    response.push(result.rows);
-    callback(null, response);
-  });
+
+  data.push(storage);
+  callback(null, data);
 };
+
 
 // get menu name and description from existing restaurant
 

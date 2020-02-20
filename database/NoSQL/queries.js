@@ -1,3 +1,6 @@
 const session = require('./index.js');
 
-console.log(session);
+const cypher = 'Create (p:Person {name: {name} })';
+const params = { name: 'Hello Word' };
+
+session.run(cypher, params);
