@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+require('newrelic');
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -24,6 +25,7 @@ app.use(express.static('public'));
 // restaurant
 
 app.post('/api/restaurant', (req, res) => {
+  console.log(req.body);
   const { restaurantName } = req.body;
   db.createRestaurant(restaurantName, (err, result) => {
     if (err) {
