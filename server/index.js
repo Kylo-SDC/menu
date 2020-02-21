@@ -45,6 +45,7 @@ app.post('/api/menu/:restaurantId', (req, res) => {
   console.log(menuName, menuDescription);
   db.createMenu(restaurantId, menuName, menuDescription, (err, result) => {
     if (err) {
+      console.log('error');
       res.status(400).json(err);
       return;
     }
