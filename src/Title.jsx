@@ -7,7 +7,7 @@ function Title(props) {
   useEffect(() => {
     const { id } = props;
     console.log(`requesting ${id}`);
-    fetch(`/gettitle/${id}`)
+    fetch(`/api/restaurantTitle/${id}`)
       .then((response) => response.json())
       .then((myJson) => {
         setRestaurantName(myJson);

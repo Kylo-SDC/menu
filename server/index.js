@@ -86,12 +86,26 @@ app.post('/api/item/:restaurantId/:menuId/:sectionId', (req, res) => {
 
 // READ
 
-// restaurant name
+// get restaurant and all restaurant info (menus, sections, items)
 
 app.get('/api/restaurant/:restaurantId', (req, res) => {
   let { restaurantId } = req.params;
   restaurantId = Number(restaurantId);
   db.getRestaurant(restaurantId, (err, result) => {
+    if (err) {
+      res.status(400).json(err);
+      return;
+    }
+    res.status(200).json(result);
+  });
+});
+
+// get restaurant name
+
+app.get('/api/restaurantTitle/:restaurantId', (req, res) => {
+  let { restaurantId } = req.params;
+  restaurantId = Number(restaurantId);
+  db.getRestaurantTitle(restaurantId, (err, result) => {
     if (err) {
       res.status(400).json(err);
       return;
@@ -306,7 +320,7 @@ app.get('/getmenu/:id', (req, res) => {
 
 app.get('/gettitle/:id', (req, res) => {
   console.log(`title requesting id = ${req.params.id}`);
-  db.getRestaurantTitle(req.params.id, (restaurant) => {
+  db.getTitle(req.params.id, (restaurant) => {
     console.log(req.headers);
     res.set({ 'Access-Control-Allow-Origin': '*' });
     res.status(200).json(restaurant);
