@@ -25,6 +25,7 @@ app.use(express.static('public'));
 // restaurant
 
 app.post('/api/restaurant', (req, res) => {
+  console.log(req.body);
   const { restaurantName } = req.body;
   db.createRestaurant(restaurantName, (err, result) => {
     if (err) {

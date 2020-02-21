@@ -27,7 +27,7 @@ const getTitle = (id, cb) => {
     return cb(restaurant[0].restaurant);
   });
 };
-/////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////
 
 const createRestaurant = (restaurant, callback) => {
   Restaurants.create(restaurant)
@@ -44,7 +44,6 @@ const getAMenu = (restId, callback) => {
 };
 
 const deleteRestaurant = (restId, callback) => {
-
   Restaurants.deleteOne({ id: `${restId}` })
     .then((restaurant) => {
       callback(null, restaurant);

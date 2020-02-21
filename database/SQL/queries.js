@@ -6,6 +6,7 @@ const pool = require('./index.js');
 
 // create new restaurant
 const createRestaurant = (restaurantName, callback) => {
+  console.log(restaurantName);
   pool.query('insert into restaurants (restaurant_name) values ($1)', [restaurantName], (err, result) => {
     if (err) {
       callback(err, null);
