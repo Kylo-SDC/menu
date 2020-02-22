@@ -17,6 +17,7 @@ const createRestaurant = (restaurantName, callback) => {
 
 // create new menu in existing restaurant
 const createMenu = (restaurantId, menuName, menuDescription, callback) => {
+  console.log(restaurantId, menuName, menuDescription);
   pool.query('INSERT INTO menus (menu_name,menu_description,restaurant_id) VALUES ($1,$2,$3)', [menuName, menuDescription, restaurantId], (err, result) => {
     if (err) {
       callback(err, null);
