@@ -10,5 +10,5 @@ const id = urlParams.get('id');
 
 console.log(`id = ${id}`);
 
-ReactDOM.render(<Title id={id} />, document.getElementById('title'));
-ReactDOM.render(<Menu id={id} />, document.getElementById('root'));
+ReactDOM.render(<Title id={id} />, document.getElementById('restaurantTitle'));
+ReactDOM.render(<Menu id={id} />, document.getElementById('restaurant'));

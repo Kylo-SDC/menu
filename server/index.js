@@ -1,14 +1,12 @@
 /* eslint-disable max-len */
 require('newrelic');
 const express = require('express');
-const cors = require('cors');
 require('dotenv').config();
 // const db = require('./../database');
 const db = require('../database/sql/queries.js');
 
 const app = express();
 
-app.use(cors());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', '*');
   next();
@@ -42,7 +40,6 @@ app.post('/api/menu/:restaurantId', (req, res) => {
   let { restaurantId } = req.params;
   restaurantId = Number(restaurantId);
   const { menuName, menuDescription } = req.body;
-  console.log(menuName, menuDescription);
   db.createMenu(restaurantId, menuName, menuDescription, (err, result) => {
     if (err) {
       console.log('error');

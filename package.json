@@ -3,9 +3,6 @@
   "description": "> Project description",
   "author": "",
   "license": "ISC",
-  "engines": {
-    "node": ">=6.13.0"
-  },
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
@@ -32,8 +29,6 @@
     "axios": "^0.19.2",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
-    "cassandra-driver": "^4.4.0",
-    "cors": "^2.8.5",
     "css-loader": "^3.4.2",
     "dotenv": "^8.2.0",
     "es6-promise": "^4.2.8",
@@ -47,11 +42,8 @@
     "jest-enzyme": "^7.1.2",
     "jest-puppeteer": "^4.4.0",
     "jquery": "^3.4.1",
-    "mongo": "^0.1.0",
-    "mongoose": "^5.8.9",
-    "mysql": "^2.18.0",
     "newrelic": "^6.4.1",
-    "node": "^13.6.0",
+    "node": "12.13.0",
     "nodemon": "^2.0.2",
     "pg": "^7.18.1",
     "prop-types": "^15.7.2",
@@ -70,7 +62,6 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.0",
