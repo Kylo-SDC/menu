@@ -1,14 +1,12 @@
 /* eslint-disable max-len */
 require('newrelic');
 const express = require('express');
-const cors = require('cors');
 require('dotenv').config();
 // const db = require('./../database');
 const db = require('../database/sql/queries.js');
 
 const app = express();
 
-app.use(cors());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', '*');
   next();
