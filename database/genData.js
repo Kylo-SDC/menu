@@ -33,7 +33,7 @@ const genRestaurants = (numOfRestaurants, encoding) => {
   }
   writeCSV();
 };
-genRestaurants(10000000, 'utf-8');
+genRestaurants(100, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -69,7 +69,7 @@ const genMenus = (numberOfMenus, encoding) => {
   }
   writeCSV();
 };
-genMenus(20000000, 'utf-8');
+genMenus(200, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -112,7 +112,7 @@ const genMenuSections = (numberOfSections, encoding) => {
   writeCSV();
 };
 
-genMenuSections(80000000, 'utf-8');
+genMenuSections(800, 'utf-8');
 
 // ////////////////////////////////////////////////////////////////////////////
 
@@ -166,7 +166,7 @@ const genMenuItems = (numberOfItems, encoding) => {
   writeCSV();
 };
 
-genMenuItems(400000000, 'utf-8');
+genMenuItems(4000, 'utf-8');
 
 // if (elapsed1 && elapsed2 && elapsed3 && elapsed4) {
 //   const totalElapsed = elapsed1 + elapsed2 + elapsed3 + elapsed4;
