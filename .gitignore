@@ -36,3 +36,5 @@ dist/
 
 ## New Relic
 /newrelic.js
+
+/docker-compose.yml
