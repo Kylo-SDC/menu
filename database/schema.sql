@@ -38,17 +38,13 @@ CREATE TABLE items
 );
 
 
-COPY restaurants(restaurant_id,restaurant_name)
-FROM '/Users/nas/Documents/sdc/menu/database/restaurants.csv' DELIMITER ',' CSV HEADER;
+COPY restaurants(restaurant_id,restaurant_name) FROM '/Users/nas/Documents/sdc/menu/database/restaurants.csv' DELIMITER ',' CSV HEADER;
 
-COPY menus(restaurant_id,menu_id,menu_name,menu_description)
-FROM '/Users/nas/Documents/sdc/menu/database/menus.csv' DELIMITER ',' CSV HEADER;
+COPY menus(restaurant_id,menu_id,menu_name,menu_description) FROM '/Users/nas/Documents/sdc/menu/database/menus.csv' DELIMITER ',' CSV HEADER;
 
-COPY sections(restaurant_id,menu_id,section_id,section_name)
-FROM '/Users/nas/Documents/sdc/menu/database/sections.csv' DELIMITER ',' CSV HEADER;
+COPY sections(restaurant_id,menu_id,section_id,section_name) FROM '/Users/nas/Documents/sdc/menu/database/sections.csv' DELIMITER ',' CSV HEADER;
 
-COPY items(restaurant_id,menu_id,section_id,item_id,item_name,item_price,item_description)
-FROM '/Users/nas/Documents/sdc/menu/database/items.csv' DELIMITER ',' CSV HEADER;
+COPY items(restaurant_id,menu_id,section_id,item_id,item_name,item_price,item_description) FROM '/Users/nas/Documents/sdc/menu/database/items.csv' DELIMITER ',' CSV HEADER;
 
 
 
